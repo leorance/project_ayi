@@ -37,11 +37,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => 'auth'], function () {
     // Authentication Routes...
     Route::get('/', function () {
-        
         return view('homepage');
     });
-
-
     Route::get('kelas-a', function () {
         return view('Kelas.kelasa');
     });
@@ -62,4 +59,5 @@ Route::group(['middleware' => 'auth'], function () {
 
     // PELAYANAN
     Route::get('pelayanan', [PelayananController::class, 'index']);
+    Route::get('pelayanan/add', [PelayananController::class, 'addForm']);
 });

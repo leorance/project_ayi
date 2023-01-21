@@ -16,7 +16,13 @@ class PelayananController extends Controller
     {
         return view('Pelayanan.index');
     }
-
+    
+    public function addForm()
+    {
+        
+        return view('Pelayanan._add');
+    }
+    
     /**
      * Show the form for creating a new resource.
      *
