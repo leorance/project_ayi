@@ -5,6 +5,7 @@ use App\Http\Controllers\UnameController;
 use App\Http\Controllers\TalentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PelayananController;
+use App\Http\Controllers\ClassController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,9 +40,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', function () {
         return view('homepage');
     });
-    Route::get('kelas-a', function () {
-        return view('Kelas.kelasa');
-    });
 
     // General Setting
 
@@ -58,6 +56,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('talent/edit/{id}', [TalentController::class, 'edit']);
 
     // PELAYANAN
-    Route::get('pelayanan', [PelayananController::class, 'index']);
+    Route::get('pelayanan', [PelayananController::class, 'index'])->name('pelayananIndex');
     Route::get('pelayanan/add', [PelayananController::class, 'addForm']);
+    Route::post('pelayanan/add', [PelayananController::class, 'store'])->name('storePelayanan');
+    
+    Route::get('pelayanan/kelasa', [PelayananController::class, 'kelasa']);
+
+    // CLASS
 });

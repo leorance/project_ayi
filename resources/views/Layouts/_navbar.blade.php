@@ -10,7 +10,7 @@
             <a class="nav-link" aria-current="page" href="{{url('/')}}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{{url('kelas-a')}}">Kelas A</a>
+            <a class="nav-link" aria-current="page" href="{{url('pelayanan/kelasa')}}">Kelas A</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="">Kelas B</a>
