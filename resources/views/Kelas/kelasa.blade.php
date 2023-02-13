@@ -4,10 +4,25 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
 @endsection
 @section('content')
-<h3 class="mt-3 mb-3">Talent</h3>
+<div class="row">
+  <div class="col">
+    <h3 class="mt-3 mb-3">Pelayanan 
+      @foreach ($pelayanans as $item)
+          {{$item->sesi}}
+      @endforeach
+    </h3>
+  </div>
+  <div class="col">
+    <h3 class="mt-3 mb-3 text-right">
+      @foreach ($pelayanans as $item)
+          {{$item->tanggal}}
+      @endforeach
+    </h3>
+  </div>
+</div>
 <div class="card">
   <div class="card-header pt-3 pb -4">
-      <h5>Talent lists</h5>
+      <h5>Pelayanan lists</h5>
   </div>
   <div class="card-body">
     @if(session('errors'))
@@ -39,6 +54,14 @@
           {{ Session::get('error') }}
       </div>
   @endif
+    <div class="row">
+      <div class="form-group col-sm-3">
+        <input type="date" class="form-control">
+      </div>
+      <div class="form-group col-sm-3">
+        <button type="button" class="btn btn-primary form-control">Filter</button>
+      </div>
+    </div>
     <table class="table table-striped" id="data-table">
         <thead>
           <tr>
@@ -51,13 +74,92 @@
         <tbody>
           <?php $no = 1 ?>
           @foreach ($talents as $data)
-          
           <tr>
             <td class="text-left">{{$no++}}</td>
             <td class="text-left w-full">{{$data->nama_talent}}</td>
             <td class="text-left w-full">
               @foreach ($pelayanans as $item)
-              {{$data->id == 1 ? $item->drummer : '-'}}
+                <?php 
+                  if($data->id == 1){
+                    foreach ($users as $key) {
+                      if ($key->id == $item->drummer) {
+                        echo $key->name;  
+                      }
+                    }
+                  } else if ($data->id == 2) {
+                    foreach ($users as $key) {
+                      if ($key->id == $item->asisten) {
+                        echo $key->name;  
+                      }
+                    }
+                  } else if ($data->id == 3) {
+                    foreach ($users as $key) {
+                      if ($key->id == $item->pendoa) {
+                        echo $key->name;  
+                      }
+                    }
+                  } else if ($data->id == 4) {
+                    foreach ($users as $key) {
+                      if ($key->id == $item->absensi) {
+                        echo $key->name;  
+                      }
+                    }
+                  } else if ($data->id == 5) {
+                    foreach ($users as $key) {
+                      if ($key->id == $item->keyboard) {
+                        echo $key->name;  
+                      }
+                    }
+                  } else if ($data->id == 6) {
+                    foreach ($users as $key) {
+                      if ($key->id == $item->gitar) {
+                        echo $key->name;
+                      }
+                    }
+                  } else if ($data->id == 7) {
+                    foreach ($users as $key) {
+                      if ($key->id == $item->sound) {
+                        echo $key->name;  
+                      }
+                    }
+                  } else if ($data->id == 8) {
+                    foreach ($users as $key) {
+                      if ($key->id == $item->mulmed) {
+                        echo $key->name;  
+                      }
+                    }
+                  } else if ($data->id == 9) {
+                    foreach ($users as $key) {
+                      if ($key->id == $item->wl) {
+                        echo $key->name;  
+                      }
+                    }
+                  } else if ($data->id == 10) {
+                    foreach ($users as $key) {
+                      if ($key->id == $item->firman) {
+                        echo $key->name;  
+                      }
+                    }
+                  } else if ($data->id == 11) {
+                    $x = explode(',', $item->singer);
+                    for ($i=0; $i < count($x); $i++) { 
+                      foreach ($users as $key) {
+                        if ($x[$i] == $key->id) {
+                          echo ' '.$key->name.',';
+                        }
+                      }
+                    }
+                  } else if ($data->id == 12) {
+                    $x = explode(',', $item->usher);
+                    for ($i=0; $i < count($x); $i++) { 
+                      foreach ($users as $key) {
+                        if ($x[$i] == $key->id) {
+                          echo ' '.$key->name.',';
+                        }
+                      }
+                    }
+                  }
+                ?>
               @endforeach
             </td>
             <td class="text-left">

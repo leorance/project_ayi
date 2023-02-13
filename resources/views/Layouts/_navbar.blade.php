@@ -9,15 +9,35 @@
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="{{url('/')}}">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{{url('pelayanan/kelasa')}}">Kelas A</a>
+          {{-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Kelas A
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Sesi 1</a></li>
+              <li><a class="dropdown-item" href="#">Sesi 2</a></li>
+              <li><a class="dropdown-item" href="#">Sesi 3</a></li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="">Kelas B</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="">Kelas C</a>
-          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Kelas B
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Sesi 1</a></li>
+              <li><a class="dropdown-item" href="#">Sesi 2</a></li>
+              <li><a class="dropdown-item" href="#">Sesi 3</a></li>
+            </ul>
+          </li><li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Kelas C
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Sesi 1</a></li>
+              <li><a class="dropdown-item" href="#">Sesi 2</a></li>
+              <li><a class="dropdown-item" href="#">Sesi 3</a></li>
+            </ul>
+          </li> --}}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               General Setting

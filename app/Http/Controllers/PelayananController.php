@@ -6,6 +6,7 @@ use App\Models\Pelayanan;
 use Illuminate\Http\Request;
 use DB;
 use Session;
+use Carbon\Carbon;
 class PelayananController extends Controller
 {
     /**
@@ -17,11 +18,38 @@ class PelayananController extends Controller
     {
         return view('Pelayanan.index');
     }
-    
+    public function idx(){
+        $nows = new Carbon('this sunday');
+        $now = $nows->format('Y-m-d');
+        $pelayanan11 = DB::select("SELECT * from pelayanan where tanggal = '$now' and sesi like '%Sesi 1%' and kelas like '%Kelas A%'");
+        $pelayanan12 = DB::select("SELECT * from pelayanan where tanggal = '$now' and sesi like '%Sesi 2%' and kelas like '%Kelas A%'");
+        $pelayanan13 = DB::select("SELECT * from pelayanan where tanggal = '$now' and sesi like '%Sesi 3%' and kelas like '%Kelas A%'");
+        $pelayanan21 = DB::select("SELECT * from pelayanan where tanggal = '$now' and sesi like '%Sesi 1%' and kelas like '%Kelas B%'");
+        $pelayanan22 = DB::select("SELECT * from pelayanan where tanggal = '$now' and sesi like '%Sesi 2%' and kelas like '%Kelas B%'");
+        $pelayanan23 = DB::select("SELECT * from pelayanan where tanggal = '$now' and sesi like '%Sesi 3%' and kelas like '%Kelas B%'");
+        $pelayanan31 = DB::select("SELECT * from pelayanan where tanggal = '$now' and sesi like '%Sesi 1%' and kelas like '%Kelas C%'");
+        $pelayanan32 = DB::select("SELECT * from pelayanan where tanggal = '$now' and sesi like '%Sesi 2%' and kelas like '%Kelas C%'");
+        $pelayanan33 = DB::select("SELECT * from pelayanan where tanggal = '$now' and sesi like '%Sesi 3%' and kelas like '%Kelas C%'");
+        $talents = DB::Select("SELECT * from talents");
+        $unames = DB::Select("SELECT * from unames");
+        return view('homepage')->with(compact('talents',
+                                            'unames', 
+                                            'pelayanan11', 
+                                            'pelayanan12', 
+                                            'pelayanan13', 
+                                            'pelayanan21', 
+                                            'pelayanan22', 
+                                            'pelayanan23', 
+                                            'pelayanan31', 
+                                            'pelayanan32', 
+                                            'pelayanan33', 
+                                        ));
+    }
     public function kelasa(){
         $talents = DB::Select("SELECT * FROM talents");
-        $pelayanans = DB::Select("SELECT * FROM pelayanan");
-        return view("Kelas.kelasa")->with(compact('talents', 'pelayanans'));
+        $pelayanans = DB::Select("SELECT * FROM pelayanan WHERE kelas LIKE '%A'");
+        $users = DB::Select("SELECT * FROM unames");
+        return view("Kelas.kelasa")->with(compact('talents', 'pelayanans', 'users'));
     }
     public function _getTowers(Request $request)
     {

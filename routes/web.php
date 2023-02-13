@@ -37,10 +37,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 // cek, udah login belom?
 Route::group(['middleware' => 'auth'], function () {
     // Authentication Routes...
-    Route::get('/', function () {
-        return view('homepage');
-    });
-
     // General Setting
 
     // USER
@@ -61,6 +57,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('pelayanan/add', [PelayananController::class, 'store'])->name('storePelayanan');
     
     Route::get('pelayanan/kelasa', [PelayananController::class, 'kelasa']);
+    Route::get('/', [PelayananController::class, 'idx']);
 
     // CLASS
 });
