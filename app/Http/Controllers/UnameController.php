@@ -37,7 +37,9 @@ class UnameController extends Controller
      */
     public function create()
     {
-        //
+
+        $datas2 = Talent::all();
+        return view("User._add", compact("datas2"));
     }
 
     /**
@@ -48,7 +50,21 @@ class UnameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $talent = implode(',',$request->id_talent);
+
+        $data = new Uname;
+        $data->name = $request->name;
+        $data->id_talent = $talent;
+        $data->save();
+
+
+        if ($data) {
+            Session::flash('success', 'Successfully add new user.');
+            return redirect()->route('users.index');
+        } else {
+            Session::flash('errors', ['' => 'Failed to add new user, Please try again later']);
+            return redirect()->route('users.index');
+        }
     }
 
     /**
@@ -105,8 +121,15 @@ class UnameController extends Controller
      * @param  \App\Models\Uname  $uname
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Uname $uname)
+    public function destroy($id)
     {
-        //
+        $data = Uname::where('id',$id)->delete();
+        if ($data) {
+            Session::flash('success', 'Successfully deleted user.');
+            return redirect()->route('users.index');
+        } else {
+            Session::flash('errors', ['' => 'Failed to deleted user, Please try again later']);
+            return redirect()->route('users.index');
+        }
     }
 }

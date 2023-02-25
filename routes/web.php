@@ -43,8 +43,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('users', [UnameController::class, 'index'])->name('users.index');
     Route::get('users-api', [UnameController::class, 'getAllUsers'])->name('getAllUsers');
     Route::get('users/edit/{id}', [UnameController::class, 'show']);
-    Route::get('users/add', [UnameController::class, 'show']);
+    Route::get('users/add', [UnameController::class, 'create'])->name('formUsers');
+    Route::post('users/add/post', [UnameController::class, 'store'])->name('addUser');
     Route::post('users/edit/{id}', [UnameController::class, 'edit']);
+    Route::delete('users/delete/{id}', [UnameController::class, 'destroy']);
 
     // TALENT
     Route::get('talent', [TalentController::class, 'index'])->name('talent.index');
