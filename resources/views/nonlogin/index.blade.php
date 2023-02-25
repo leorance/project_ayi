@@ -1,12 +1,12 @@
-@extends('Layouts._master')
-@section('content')
-<h3 class="mt-3 mb-3">Belom login</h3>
-<div class="card">
-  <div class="card-header pt-3 pb -4">
-      <h5>Rekap pelayanan</h5>
-  </div>
-  <div class="card-body">
-    kosong
-  </div>
-</div>
-@endsection
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    hello world
+</body>
+</html>

@@ -44,7 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('users-api', [UnameController::class, 'getAllUsers'])->name('getAllUsers');
     Route::get('users/edit/{id}', [UnameController::class, 'show']);
     Route::post('users/edit/{id}', [UnameController::class, 'edit']);
-    
+
     // TALENT
     Route::get('talent', [TalentController::class, 'index'])->name('talent.index');
     Route::get('talent-api', [TalentController::class, 'getAllTalents'])->name('getAllTalents');
@@ -55,9 +55,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('pelayanan', [PelayananController::class, 'index'])->name('pelayananIndex');
     Route::get('pelayanan/add', [PelayananController::class, 'addForm']);
     Route::post('pelayanan/add', [PelayananController::class, 'store'])->name('storePelayanan');
-    
+
     Route::get('pelayanan/kelasa', [PelayananController::class, 'kelasa']);
-    Route::get('/', [PelayananController::class, 'idx']);
+    Route::get('/', [PelayananController::class, 'idx'])->name("dashboard");
 
     // CLASS
 });
