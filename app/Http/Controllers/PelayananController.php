@@ -33,16 +33,16 @@ class PelayananController extends Controller
         $talents = DB::Select("SELECT * from talents");
         $unames = DB::Select("SELECT * from unames");
         return view('homepage')->with(compact('talents',
-                                            'unames', 
-                                            'pelayanan11', 
-                                            'pelayanan12', 
-                                            'pelayanan13', 
-                                            'pelayanan21', 
-                                            'pelayanan22', 
-                                            'pelayanan23', 
-                                            'pelayanan31', 
-                                            'pelayanan32', 
-                                            'pelayanan33', 
+                                            'unames',
+                                            'pelayanan11',
+                                            'pelayanan12',
+                                            'pelayanan13',
+                                            'pelayanan21',
+                                            'pelayanan22',
+                                            'pelayanan23',
+                                            'pelayanan31',
+                                            'pelayanan32',
+                                            'pelayanan33',
                                         ));
     }
     public function kelasa(){
@@ -82,7 +82,7 @@ class PelayananController extends Controller
                                                     'firmans',
                                                     'datas'));
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -101,12 +101,44 @@ class PelayananController extends Controller
      */
     public function store(Request $request)
     {
-        $usher = implode(',',$request->singer);
-        $singer = implode(',',$request->usher);
-        
-        // dd($request->all(), $usher, $singer);
+        // $singers = implode(',',$request->singe   r);
+        // $ushers = implode(',',$request->usher);
+        $data = [];
+        foreach ($request->id_talent as $key => $id_talent) {
+            $data[$key]['id_talent'] = $id_talent;
+        }
+        foreach ($request->id_user as $key => $id_user) {
+            $data[$key]['id_uname'] = $id_user;
+            $data[$key]['sesi'] = $request->sesi;
+            $data[$key]['kelas'] = $request->kelas;
+            $data[$key]['tanggal'] = $request->date;
+        }
 
-        $data = new Pelayanan;
+        $singers = implode(',',$data[10]['id_uname']);
+        $ushers  = implode(',',$data[11]['id_uname']);
+        $data[10]['id_uname'] = $singers;
+        $data[11]['id_uname'] = $ushers;
+
+        $save = Pelayanan::upsert($data, ['id']);
+        // foreach ($request->singer as $key => $singer) {
+        //     $data[$key]['id_user'] = $singers;
+        // }
+        // foreach ($request->usher as $key => $usher) {
+        //     $data[$key]['id_user'] = $ushers;
+        // }
+        // print_r($data);
+
+        // $singera = array("id_user");
+        // $singerb = array($singers);
+        // $singers = array_combine($singera, $singerb);
+
+        // $ushera = array("id_user");
+        // $usherb = array($ushers);
+        // $ushers = array_combine($ushera, $usherb);
+
+        // print_r(array($singers, $ushers));
+
+        /*$data = new Pelayanan;
         $data->sesi = $request->sesi;
         $data->tanggal = $request->date;
         $data->drummer = $request->drummer;
@@ -122,9 +154,9 @@ class PelayananController extends Controller
         $data->pendoa = $request->pendoa;
         $data->absensi = $request->absensi;
         $data->kelas = $request->kelas;
-        $data->save();
+        $data->save();*/
 
-        if ($data) {
+        if ($save) {
             Session::flash('success', 'Successfully add new pelayanan.');
             return redirect()->route('pelayananIndex');
         } else {

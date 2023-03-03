@@ -6,7 +6,7 @@
     <h3 class="mt-3 mb-3">Tambah Pelayanan</h3>
     <div class="card">
         <div class="card-header pt-3 pb -4">
-            <h5>Form Pelayanan</h5>
+            <h5>Form Pelayanans</h5>
         </div>
         <div class="card-body">
             <form action="{{ route('storePelayanan') }}" method="POST" enctype='multipart/form-data'>
@@ -40,7 +40,8 @@
                     <div class="col">
                         <div class="mb-3">
                             <label for=""><strong>Gitar</strong></label>
-                            <select class="form-control select" name="gitar">
+                            <input type="hidden" name="id_talent[]" value="6">
+                            <select class="form-control select" name="id_user[]">
                                 <option value="0"> -- Pilih -- </option>
                                 @foreach ($gitars as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
@@ -49,7 +50,8 @@
                         </div>
                         <div class="mb-3" id="musik2">
                             <label for=""><strong>Drummer</strong></label>
-                            <select class="form-control select" name="drummer">
+                            <input type="hidden" name="id_talent[]" value="1">
+                            <select class="form-control select" name="id_user[]">
                                 <option value="0"> -- Pilih -- </option>
                                 @foreach ($drummers as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
@@ -58,7 +60,8 @@
                         </div>
                         <div class="mb-3" id="musik1">
                             <label for=""><strong>Keyboard</strong></label>
-                            <select class="form-control select" name="keyboard">
+                            <input type="hidden" name="id_talent[]" value="5">
+                            <select class="form-control select" name="id_user[]">
                                 <option value="0"> -- Pilih -- </option>
                                 @foreach ($keyboards as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
@@ -67,7 +70,8 @@
                         </div>
                         <div class="mb-3">
                             <label for=""><strong>Operator Sound</strong></label>
-                            <select class="form-control select" name="sound">
+                            <input type="hidden" name="id_talent[]" value="7">
+                            <select class="form-control select" name="id_user[]">
                                 <option value="0"> -- Pilih -- </option>
                                 @foreach ($sounds as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
@@ -76,7 +80,8 @@
                         </div>
                         <div class="mb-3">
                             <label for=""><strong>Operator Multimedia</strong></label>
-                            <select class="form-control select" name="mulmed">
+                            <input type="hidden" name="id_talent[]" value="8">
+                            <select class="form-control select" name="id_user[]">
                                 <option value="0"> -- Pilih -- </option>
                                 @foreach ($mulmeds as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
@@ -85,7 +90,8 @@
                         </div>
                         <div class="mb-3">
                             <label for=""><strong>Pemimpin Pujian</strong></label>
-                            <select class="form-control select" name="wl">
+                            <input type="hidden" name="id_talent[]" value="9">
+                            <select class="form-control select" name="id_user[]">
                                 <option value="0"> -- Pilih -- </option>
                                 @foreach ($wls as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
@@ -96,7 +102,8 @@
                     <div class="col form-group">
                         <div class="mb-3">
                             <label for=""><strong>Pembawa Firman</strong></label>
-                            <select class="form-control select" name="firman">
+                            <input type="hidden" name="id_talent[]" value="10">
+                            <select class="form-control select" name="id_user[]">
                                 <option value="0"> -- Pilih -- </option>
                                 @foreach ($firmans as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
@@ -105,7 +112,8 @@
                         </div>
                         <div class="mb-3">
                             <label for=""><strong>Asisten</strong></label>
-                            <select class="form-control select" name="asisten">
+                            <input type="hidden" name="id_talent[]" value="2">
+                            <select class="form-control select" name="id_user[]">
                                 <option value="0"> -- Pilih -- </option>
                                 @foreach ($datas as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
@@ -114,7 +122,8 @@
                         </div>
                         <div class="mb-3">
                             <label for=""><strong>Pendoa</strong></label>
-                            <select class="form-control select" name="pendoa">
+                            <input type="hidden" name="id_talent[]" value="3">
+                            <select class="form-control select" name="id_user[]">
                                 <option value="0"> -- Pilih -- </option>
                                 @foreach ($datas as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
@@ -123,7 +132,8 @@
                         </div>
                         <div class="mb-3">
                             <label for=""><strong>Absensi</strong></label>
-                            <select class="form-control select" name="absensi">
+                            <input type="hidden" name="id_talent[]" value="4">
+                            <select class="form-control select" name="id_user[]">
                                 <option value="0"> -- Pilih -- </option>
                                 @foreach ($datas as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
@@ -132,7 +142,8 @@
                         </div>
                         <div class="mb-3">
                             <label for=""><strong>Singer</strong></label>
-                            <select class="form-control select" name="singer[]" multiple="multiple">
+                            <input type="hidden" name="id_talent[]" value="11">
+                            <select class="form-control select" name="id_user[10][]" multiple="multiple">
                                 <option value="0"> -- Pilih -- </option>
                                 @foreach ($datas as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
@@ -141,7 +152,8 @@
                         </div>
                         <div class="mb-3">
                             <label for=""><strong>Usher</strong></label>
-                            <select class="form-control select" name="usher[]" multiple="multiple">
+                            <input type="hidden" name="id_talent[]" value="12">
+                            <select class="form-control select" name="id_user[11][]" multiple="multiple">
                                 @foreach ($datas as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
