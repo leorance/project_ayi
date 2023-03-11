@@ -14,36 +14,481 @@ class PelayananController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('Pelayanan.index');
+        // dd(Carbon::now()->next(Carbon::SUNDAY)->todatestring());
+        if (!$request->all()) {
+            $now = Carbon::now()->next(Carbon::SUNDAY)->todatestring();
+            $pel11 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_A'
+                                    and p.sesi LIKE '%_1'
+                                    and p.tanggal = '$now'
+            ");
+            $pel12 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_A'
+                                    and p.sesi LIKE '%_2'
+                                    and p.tanggal = '$now'
+            ");
+            $pel13 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_A'
+                                    and p.sesi LIKE '%_3'
+                                    and p.tanggal = '$now'
+            ");
+            $pel21 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_B'
+                                    and p.sesi LIKE '%_1'
+                                    and p.tanggal = '$now'
+            ");
+            $pel22 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_B'
+                                    and p.sesi LIKE '%_2'
+                                    and p.tanggal = '$now'
+            ");
+            $pel23 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_B'
+                                    and p.sesi LIKE '%_3'
+                                    and p.tanggal = '$now'
+            ");
+            $pel31 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_C'
+                                    and p.sesi LIKE '%_1'
+                                    and p.tanggal = '$now'
+            ");
+            $pel32 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_C'
+                                    and p.sesi LIKE '%_2'
+                                    and p.tanggal = '$now'
+            ");
+            $pel33 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_C'
+                                    and p.sesi LIKE '%_3'
+                                    and p.tanggal = '$now'
+            ");
+        } else {
+            $pel11 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_A'
+                                    and p.sesi LIKE '%_1'
+                                    and p.tanggal = '$request->date'
+            ");
+            $pel12 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_A'
+                                    and p.sesi LIKE '%_2'
+                                    and p.tanggal = '$request->date'
+            ");
+            $pel13 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_A'
+                                    and p.sesi LIKE '%_3'
+                                    and p.tanggal = '$request->date'
+            ");
+            $pel21 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_B'
+                                    and p.sesi LIKE '%_1'
+                                    and p.tanggal = '$request->date'
+            ");
+            $pel22 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_B'
+                                    and p.sesi LIKE '%_2'
+                                    and p.tanggal = '$request->date'
+            ");
+            $pel23 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_B'
+                                    and p.sesi LIKE '%_3'
+                                    and p.tanggal = '$request->date'
+            ");
+            $pel31 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_C'
+                                    and p.sesi LIKE '%_1'
+                                    and p.tanggal = '$request->date'
+            ");
+            $pel32 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_C'
+                                    and p.sesi LIKE '%_2'
+                                    and p.tanggal = '$request->date'
+            ");
+            $pel33 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_C'
+                                    and p.sesi LIKE '%_3'
+                                    and p.tanggal = '$request->date'
+            ");
+        }
+        return view('Pelayanan.index', compact('pel11', 'pel12', 'pel13',
+                                                'pel21', 'pel22', 'pel23',
+                                                'pel31', 'pel32', 'pel33'));
     }
     public function idx(){
-        $nows = new Carbon('this sunday');
-        $now = $nows->format('Y-m-d');
-        $pelayanan11 = DB::select("SELECT * from pelayanan where tanggal = '$now' and sesi like '%Sesi 1%' and kelas like '%Kelas A%'");
-        $pelayanan12 = DB::select("SELECT * from pelayanan where tanggal = '$now' and sesi like '%Sesi 2%' and kelas like '%Kelas A%'");
-        $pelayanan13 = DB::select("SELECT * from pelayanan where tanggal = '$now' and sesi like '%Sesi 3%' and kelas like '%Kelas A%'");
-        $pelayanan21 = DB::select("SELECT * from pelayanan where tanggal = '$now' and sesi like '%Sesi 1%' and kelas like '%Kelas B%'");
-        $pelayanan22 = DB::select("SELECT * from pelayanan where tanggal = '$now' and sesi like '%Sesi 2%' and kelas like '%Kelas B%'");
-        $pelayanan23 = DB::select("SELECT * from pelayanan where tanggal = '$now' and sesi like '%Sesi 3%' and kelas like '%Kelas B%'");
-        $pelayanan31 = DB::select("SELECT * from pelayanan where tanggal = '$now' and sesi like '%Sesi 1%' and kelas like '%Kelas C%'");
-        $pelayanan32 = DB::select("SELECT * from pelayanan where tanggal = '$now' and sesi like '%Sesi 2%' and kelas like '%Kelas C%'");
-        $pelayanan33 = DB::select("SELECT * from pelayanan where tanggal = '$now' and sesi like '%Sesi 3%' and kelas like '%Kelas C%'");
-        $talents = DB::Select("SELECT * from talents");
-        $unames = DB::Select("SELECT * from unames");
-        return view('homepage')->with(compact('talents',
-                                            'unames',
-                                            'pelayanan11',
-                                            'pelayanan12',
-                                            'pelayanan13',
-                                            'pelayanan21',
-                                            'pelayanan22',
-                                            'pelayanan23',
-                                            'pelayanan31',
-                                            'pelayanan32',
-                                            'pelayanan33',
-                                        ));
+            $now = Carbon::now()->next(Carbon::SUNDAY)->todatestring();
+            $pel11 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_A'
+                                    and p.sesi LIKE '%_1'
+                                    and p.tanggal = '$now'
+            ");
+            $pel12 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_A'
+                                    and p.sesi LIKE '%_2'
+                                    and p.tanggal = '$now'
+            ");
+            $pel13 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_A'
+                                    and p.sesi LIKE '%_3'
+                                    and p.tanggal = '$now'
+            ");
+            $pel21 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_B'
+                                    and p.sesi LIKE '%_1'
+                                    and p.tanggal = '$now'
+            ");
+            $pel22 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_B'
+                                    and p.sesi LIKE '%_2'
+                                    and p.tanggal = '$now'
+            ");
+            $pel23 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_B'
+                                    and p.sesi LIKE '%_3'
+                                    and p.tanggal = '$now'
+            ");
+            $pel31 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_C'
+                                    and p.sesi LIKE '%_1'
+                                    and p.tanggal = '$now'
+            ");
+            $pel32 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_C'
+                                    and p.sesi LIKE '%_2'
+                                    and p.tanggal = '$now'
+            ");
+            $pel33 = DB::select("SELECT
+                                    t.nama_talent,
+                                    u.name,
+                                    p.tanggal,
+                                    p.kelas,
+                                    p.sesi
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.kelas LIKE '%_C'
+                                    and p.sesi LIKE '%_3'
+                                    and p.tanggal = '$now'
+            ");
+        return view('homepage', compact('pel11', 'pel12', 'pel13',
+        'pel21', 'pel22', 'pel23',
+        'pel31', 'pel32', 'pel33'));
     }
     public function kelasa(){
         $talents = DB::Select("SELECT * FROM talents");
@@ -101,8 +546,6 @@ class PelayananController extends Controller
      */
     public function store(Request $request)
     {
-        // $singers = implode(',',$request->singe   r);
-        // $ushers = implode(',',$request->usher);
         $data = [];
         foreach ($request->id_talent as $key => $id_talent) {
             $data[$key]['id_talent'] = $id_talent;
@@ -112,49 +555,15 @@ class PelayananController extends Controller
             $data[$key]['sesi'] = $request->sesi;
             $data[$key]['kelas'] = $request->kelas;
             $data[$key]['tanggal'] = $request->date;
+            $data[$key]['id_pel'] = "PEL-".$request->sesi."-".$request->kelas."-".$request->date;
         }
 
-        $singers = implode(',',$data[10]['id_uname']);
-        $ushers  = implode(',',$data[11]['id_uname']);
-        $data[10]['id_uname'] = $singers;
-        $data[11]['id_uname'] = $ushers;
+        // $singers = implode(',',$data[10]['id_uname']);
+        // $ushers  = implode(',',$data[11]['id_uname']);
+        // $data[10]['id_uname'] = $singers;
+        // $data[11]['id_uname'] = $ushers;
 
         $save = Pelayanan::upsert($data, ['id']);
-        // foreach ($request->singer as $key => $singer) {
-        //     $data[$key]['id_user'] = $singers;
-        // }
-        // foreach ($request->usher as $key => $usher) {
-        //     $data[$key]['id_user'] = $ushers;
-        // }
-        // print_r($data);
-
-        // $singera = array("id_user");
-        // $singerb = array($singers);
-        // $singers = array_combine($singera, $singerb);
-
-        // $ushera = array("id_user");
-        // $usherb = array($ushers);
-        // $ushers = array_combine($ushera, $usherb);
-
-        // print_r(array($singers, $ushers));
-
-        /*$data = new Pelayanan;
-        $data->sesi = $request->sesi;
-        $data->tanggal = $request->date;
-        $data->drummer = $request->drummer;
-        $data->keyboard = $request->keyboard;
-        $data->gitar =  $request->gitar;
-        $data->sound = $request->sound;
-        $data->mulmed = $request->mulmed;
-        $data->wl = $request->wl;
-        $data->firman = $request->firman;
-        $data->singer = $singer;
-        $data->usher = $usher;
-        $data->asisten = $request->asisten;
-        $data->pendoa = $request->pendoa;
-        $data->absensi = $request->absensi;
-        $data->kelas = $request->kelas;
-        $data->save();*/
 
         if ($save) {
             Session::flash('success', 'Successfully add new pelayanan.');

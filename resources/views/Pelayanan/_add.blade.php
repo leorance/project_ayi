@@ -143,7 +143,8 @@
                         <div class="mb-3">
                             <label for=""><strong>Singer</strong></label>
                             <input type="hidden" name="id_talent[]" value="11">
-                            <select class="form-control select" name="id_user[10][]" multiple="multiple">
+                            <input type="hidden" name="id_talent[]" value="11">
+                            <select class="form-control select" id="uqiwye" name="id_user[]" multiple="multiple">
                                 <option value="0"> -- Pilih -- </option>
                                 @foreach ($datas as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
@@ -153,7 +154,8 @@
                         <div class="mb-3">
                             <label for=""><strong>Usher</strong></label>
                             <input type="hidden" name="id_talent[]" value="12">
-                            <select class="form-control select" name="id_user[11][]" multiple="multiple">
+                            <input type="hidden" name="id_talent[]" value="12">
+                            <select class="form-control select" id="y" name="id_user[]" multiple="multiple">
                                 @foreach ($datas as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -178,7 +180,10 @@
 @section('script-custom')
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
-        $(".select").select2();
+        $(".select").select2({
+            maximumSelectionLength: 2,
+            minimumSelectionLength: 2
+        });
         $('select[name="kelas"]').on('change', function() {
             var id = $(this).val();
             console.log(id);
@@ -192,6 +197,11 @@
                 $('#musik1').removeClass('d-none');
                 $('#musik2').removeClass('d-none');
             }
+        });
+        $( document ).ready(function() {
+            $('#uqiwye > :selected').each(function() {
+                alert($(this).text());   // using text() here, because the 
+            });
         });
         $('select').on('change', function() {
             // Find the value we just chose
@@ -208,5 +218,6 @@
             // Hide the currently selected option from the other select
             $('option[value="' + selected + '"]', $otherSelect).remove();
         });
+
     </script>
 @endsection
