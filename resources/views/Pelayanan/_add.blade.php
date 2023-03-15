@@ -9,8 +9,22 @@
             <h5>Form Pelayanans</h5>
         </div>
         <div class="card-body">
+            <form action="{{ url('pelayanan/add/{date}') }}" method="post">
+                @csrf
+                <div class="row">
+                    <div class="col">
+                        <label for=""><strong>Cek Tanggal</strong></label>
+                        <input type="date" class="form-control" name="tanggal">
+                    </div>
+                    <div class="col">
+                        <br>
+                        <button type="submit" class="btn btn-primary mt-2">Cek ketersediaan pelayan</button>
+                    </div>
+                </div>
+            </form>
             <form action="{{ route('storePelayanan') }}" method="POST" enctype='multipart/form-data'>
                 @csrf
+                <br>
                 <div class="row form-group">
                     <div class="col-sm-4">
                         <div class="mb-3">
@@ -31,8 +45,10 @@
                                 <option value="Sesi 3">Sesi 3</option>
                             </select>
                         </div>
-                        <label for=""><strong>Tanggal</strong></label>
-                        <input type="date" class="form-control" name="date" id="">
+                        <div class="mb-3">
+                            <label for=""><strong>Tanggal</strong></label>
+                            <input type="date" class="form-control" name="date">
+                        </div>
                     </div>
                 </div>
                 <hr>
@@ -166,7 +182,8 @@
                 <div class="row form-group">
                     <div class="row">
                         <div class="col-2">
-                            <button type="button" onclick="window.history.go(-1)" class="btn btn-secondary">Back</button>
+                            <button type="button" onclick="window.history.go(-1)"
+                                class="btn btn-secondary">Back</button>
                         </div>
                         <div class="col-2">
                             <button type="submit" class="btn btn-primary">Tambahkan data</button>
@@ -198,11 +215,28 @@
                 $('#musik2').removeClass('d-none');
             }
         });
-        $( document ).ready(function() {
+        $(document).ready(function() {
             $('#uqiwye > :selected').each(function() {
-                alert($(this).text());   // using text() here, because the 
+                alert($(this).text()); // using text() here, because the 
             });
         });
+        // $('#tgl').on('change', function() {
+        //     var date = new Date($('#tgl').val());
+        //     var day = date.getDate();
+        //     var month = date.getMonth() + 1;
+        //     var year = date.getFullYear();
+        //     var getDate = [year, month, day].join('-');
+        //     $.ajax({
+        //         url: "{{ url('pelayanan/add/{date}') }}",
+        //         data: {
+        //             tanggal: getDate
+        //         },
+        //         type: 'get',
+        //         success: function(data){
+        //             console.log(data);
+        //         }
+        //     });
+        // })
         $('select').on('change', function() {
             // Find the value we just chose
             let selected = $(this).val();
@@ -218,6 +252,5 @@
             // Hide the currently selected option from the other select
             $('option[value="' + selected + '"]', $otherSelect).remove();
         });
-
     </script>
 @endsection

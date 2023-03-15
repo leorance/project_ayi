@@ -6,6 +6,7 @@ use App\Http\Controllers\TalentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PelayananController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\NonLoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,9 +23,8 @@ Route::get('get-uname', [UnameController::class, 'getList']);
 // Kelas B
 // Kelas C
 
-Route::get('b', function () {
-    return view("nonlogin.index");
-});
+Route::get('nologin', [NonLoginController::class, 'index']);
+Route::post('nologin/{date}', [NonLoginController::class, 'index']);
 
 Route::get('/', function () {
     return redirect()->route('home');
@@ -59,6 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('pelayanan/add', [PelayananController::class, 'addForm'])->name("formPelayanan");
     Route::post('pelayanan/add', [PelayananController::class, 'store'])->name('storePelayanan');
     Route::post('pelayanan/{date}', [PelayananController::class, 'index']);
+    Route::post('pelayanan/add/{date}', [PelayananController::class, 'addForm']);
 
     Route::get('pelayanan/kelasa', [PelayananController::class, 'kelasa']);
     Route::get('/', [PelayananController::class, 'idx'])->name("dashboard");

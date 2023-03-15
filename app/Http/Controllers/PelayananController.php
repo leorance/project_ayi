@@ -508,16 +508,146 @@ class PelayananController extends Controller
         return response()->json($list);
     }
 
-    public function addForm()
+    public function addForm(Request $request)
     {
-        $drummers = DB::select("SELECT name, id from unames where id_talent like '1%'");
-        $keyboards = DB::select("SELECT name, id from unames where id_talent like '%5%'");
-        $gitars = DB::select("SELECT name, id from unames where id_talent like '%6%'");
-        $sounds = DB::select("SELECT name, id from unames where id_talent like '%7%'");
-        $mulmeds = DB::select("SELECT name, id from unames where id_talent like '%8%'");
-        $wls = DB::select("SELECT name, id from unames where id_talent like '%9%'");
-        $firmans = DB::select("SELECT name, id from unames where id_talent like '%10%'");
-        $datas = DB::select("SELECT name, id from unames");
+        if(!$request->all()){
+            $drummers = DB::select("SELECT name, id from unames where id_talent like 'x%'");
+            $keyboards = DB::select("SELECT name, id from unames where id_talent like '%x%'");
+            $gitars = DB::select("SELECT name, id from unames where id_talent like '%x%'");
+            $sounds = DB::select("SELECT name, id from unames where id_talent like '%x%'");
+            $mulmeds = DB::select("SELECT name, id from unames where id_talent like '%x%'");
+            $wls = DB::select("SELECT name, id from unames where id_talent like '%x%'");
+            $firmans = DB::select("SELECT name, id from unames where id_talent like '%x%'");
+            $datas = DB::select("SELECT name, id from unames where id_talent like '%x%'");
+        } else {
+            $drummers = DB::select("SELECT
+                                        u.id,
+                                        u.name,
+                                        count(u.name)
+                                    FROM
+                                        pelayanan p
+                                    join talents t on
+                                        t.id = p.id_talent
+                                    left join unames u on
+                                        u.id = p.id_uname
+                                    WHERE
+                                        p.tanggal = '$request->tanggal'
+                                        and u.id_talent like '1%'
+                                    GROUP by u.id
+                                    having count(u.id) < 3;
+            ");
+            $keyboards = DB::select("SELECT
+                                        u.id,
+                                        u.name,
+                                        count(u.name)
+                                    FROM
+                                        pelayanan p
+                                    join talents t on
+                                        t.id = p.id_talent
+                                    left join unames u on
+                                        u.id = p.id_uname
+                                    WHERE
+                                        p.tanggal = '$request->tanggal'
+                                        and u.id_talent like '%5%'
+                                    GROUP by u.id
+                                    having count(u.id) < 3
+            ");
+            $gitars = DB::select("SELECT
+                                    u.id,
+                                    u.name,
+                                    count(u.name)
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.tanggal = '$request->tanggal'
+                                    and u.id_talent like '%6%'
+                                GROUP by u.id
+                                having count(u.id) < 3
+            ");
+            $sounds = DB::select("SELECT
+                                    u.id,
+                                    u.name,
+                                    count(u.name)
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.tanggal = '$request->tanggal'
+                                    and u.id_talent like '%7%'
+                                GROUP by u.id
+                                having count(u.id) < 3
+            ");
+            $mulmeds = DB::select("SELECT
+                                        u.id,
+                                        u.name,
+                                        count(u.name)
+                                    FROM
+                                        pelayanan p
+                                    join talents t on
+                                        t.id = p.id_talent
+                                    left join unames u on
+                                        u.id = p.id_uname
+                                    WHERE
+                                        p.tanggal = '$request->tanggal'
+                                        and u.id_talent like '%8%'
+                                    GROUP by u.id
+                                    having count(u.id) < 3
+            ");
+            $wls = DB::select("SELECT
+                                    u.id,
+                                    u.name,
+                                    count(u.name)
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.tanggal = '$request->tanggal'
+                                    and u.id_talent like '%9%'
+                                GROUP by u.id
+                                having count(u.id) < 3
+            ");
+            $firmans = DB::select("SELECT
+                                    u.id,
+                                    u.name,
+                                    count(u.name)
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.tanggal = '$request->tanggal'
+                                    and u.id_talent like '%10%'
+                                GROUP by u.id
+                                having count(u.id) < 3
+            ");
+            $datas = DB::select("SELECT
+                                    u.id,
+                                    u.name,
+                                    count(u.name)
+                                FROM
+                                    pelayanan p
+                                join talents t on
+                                    t.id = p.id_talent
+                                left join unames u on
+                                    u.id = p.id_uname
+                                WHERE
+                                    p.tanggal = '$request->tanggal'
+                                GROUP by u.id
+                                having count(u.id) < 3
+            ");
+        }
         return view('Pelayanan._add')->with(compact('drummers',
                                                     'keyboards',
                                                     'gitars',
