@@ -515,7 +515,7 @@ class PelayananController extends Controller
             $keyboards = DB::select("SELECT name, id from unames where id_talent like '%x%'");
             $gitars = DB::select("SELECT name, id from unames where id_talent like '%x%'");
             $sounds = DB::select("SELECT name, id from unames where id_talent like '%x%'");
-            $mulmeds = DB::select("SELECT name, id from unames where id_talent like '%x%'");
+            $mulmeds = DB::select("SELECT name, id from unames where id_talent like '%x'");
             $wls = DB::select("SELECT name, id from unames where id_talent like '%x%'");
             $firmans = DB::select("SELECT name, id from unames where id_talent like '%x%'");
             $datas = DB::select("SELECT name, id from unames where id_talent like '%x%'");
@@ -523,129 +523,245 @@ class PelayananController extends Controller
             $drummers = DB::select("SELECT
                                         u.id,
                                         u.name,
-                                        count(u.name)
+                                        COUNT(p.id_uname)
                                     FROM
-                                        pelayanan p
-                                    join talents t on
-                                        t.id = p.id_talent
-                                    left join unames u on
+                                        unames u
+                                    LEFT JOIN pelayanan p ON
                                         u.id = p.id_uname
                                     WHERE
-                                        p.tanggal = '$request->tanggal'
-                                        and u.id_talent like '1%'
-                                    GROUP by u.id
-                                    having count(u.id) < 3;
+                                        u.id_talent LIKE '1%'
+                                    GROUP BY
+                                        u.id
+                                    HAVING
+                                        COUNT(p.id_uname) BETWEEN 0 AND 1
+                                    UNION
+                                    SELECT
+                                        u.id,
+                                        u.name,
+                                        COUNT(p.id_uname)
+                                    FROM
+                                        unames u
+                                    RIGHT JOIN pelayanan p ON
+                                        u.id = p.id_uname
+                                    WHERE
+                                        u.id_talent LIKE '1%'
+                                        AND p.tanggal = '$request->tanggal' 
+                                    GROUP BY
+                                        u.id
+                                    HAVING
+                                        COUNT(p.id_uname) BETWEEN 0 AND 1;
             ");
             $keyboards = DB::select("SELECT
                                         u.id,
                                         u.name,
-                                        count(u.name)
+                                        COUNT(p.id_uname)
                                     FROM
-                                        pelayanan p
-                                    join talents t on
-                                        t.id = p.id_talent
-                                    left join unames u on
+                                        unames u
+                                    LEFT JOIN pelayanan p ON
                                         u.id = p.id_uname
                                     WHERE
-                                        p.tanggal = '$request->tanggal'
-                                        and u.id_talent like '%5%'
-                                    GROUP by u.id
-                                    having count(u.id) < 3
+                                        u.id_talent LIKE '%5%'
+                                    GROUP BY
+                                        u.id
+                                    HAVING
+                                        COUNT(p.id_uname) BETWEEN 0 AND 1
+                                    UNION
+                                    SELECT
+                                        u.id,
+                                        u.name,
+                                        COUNT(p.id_uname)
+                                    FROM
+                                        unames u
+                                    RIGHT JOIN pelayanan p ON
+                                        u.id = p.id_uname
+                                    WHERE
+                                        u.id_talent LIKE '%5%'
+                                        AND p.tanggal = '$request->tanggal' 
+                                    GROUP BY
+                                        u.id
+                                    HAVING
+                                        COUNT(p.id_uname) BETWEEN 0 AND 1;
             ");
             $gitars = DB::select("SELECT
                                     u.id,
                                     u.name,
-                                    count(u.name)
+                                    COUNT(p.id_uname)
                                 FROM
-                                    pelayanan p
-                                join talents t on
-                                    t.id = p.id_talent
-                                left join unames u on
+                                    unames u
+                                LEFT JOIN pelayanan p ON
                                     u.id = p.id_uname
                                 WHERE
-                                    p.tanggal = '$request->tanggal'
-                                    and u.id_talent like '%6%'
-                                GROUP by u.id
-                                having count(u.id) < 3
-            ");
-            $sounds = DB::select("SELECT
+                                    u.id_talent LIKE '%6%'
+                                GROUP BY
+                                    u.id
+                                HAVING
+                                    COUNT(p.id_uname) BETWEEN 0 AND 1
+                                UNION
+                                SELECT
                                     u.id,
                                     u.name,
-                                    count(u.name)
+                                    COUNT(p.id_uname)
                                 FROM
-                                    pelayanan p
-                                join talents t on
-                                    t.id = p.id_talent
-                                left join unames u on
+                                    unames u
+                                RIGHT JOIN pelayanan p ON
                                     u.id = p.id_uname
                                 WHERE
-                                    p.tanggal = '$request->tanggal'
-                                    and u.id_talent like '%7%'
-                                GROUP by u.id
-                                having count(u.id) < 3
+                                    u.id_talent LIKE '%6%'
+                                    AND p.tanggal = '$request->tanggal' 
+                                GROUP BY
+                                    u.id
+                                HAVING
+                                    COUNT(p.id_uname) BETWEEN 0 AND 1;
+            ");
+            $sounds = DB::select("SELECT
+                                        u.id,
+                                        u.name,
+                                        COUNT(p.id_uname)
+                                    FROM
+                                        unames u
+                                    LEFT JOIN pelayanan p ON
+                                        u.id = p.id_uname
+                                    WHERE
+                                        u.id_talent LIKE '%7%'
+                                    GROUP BY
+                                        u.id
+                                    HAVING
+                                        COUNT(p.id_uname) BETWEEN 0 AND 1
+                                    UNION
+                                    SELECT
+                                        u.id,
+                                        u.name,
+                                        COUNT(p.id_uname)
+                                    FROM
+                                        unames u
+                                    RIGHT JOIN pelayanan p ON
+                                        u.id = p.id_uname
+                                    WHERE
+                                        u.id_talent LIKE '%7%'
+                                        AND p.tanggal = '$request->tanggal' 
+                                    GROUP BY
+                                        u.id
+                                    HAVING
+                                        COUNT(p.id_uname) BETWEEN 0 AND 1;
             ");
             $mulmeds = DB::select("SELECT
                                         u.id,
                                         u.name,
-                                        count(u.name)
+                                        COUNT(p.id_uname)
                                     FROM
-                                        pelayanan p
-                                    join talents t on
-                                        t.id = p.id_talent
-                                    left join unames u on
+                                        unames u
+                                    LEFT JOIN pelayanan p ON
                                         u.id = p.id_uname
                                     WHERE
-                                        p.tanggal = '$request->tanggal'
-                                        and u.id_talent like '%8%'
-                                    GROUP by u.id
-                                    having count(u.id) < 3
+                                        u.id_talent LIKE '%8%'
+                                    GROUP BY
+                                        u.id
+                                    HAVING
+                                        COUNT(p.id_uname) BETWEEN 0 AND 1
+                                    UNION
+                                    SELECT
+                                        u.id,
+                                        u.name,
+                                        COUNT(p.id_uname)
+                                    FROM
+                                        unames u
+                                    RIGHT JOIN pelayanan p ON
+                                        u.id = p.id_uname
+                                    WHERE
+                                        u.id_talent LIKE '%8%'
+                                        AND p.tanggal = '$request->tanggal' 
+                                    GROUP BY
+                                        u.id
+                                    HAVING
+                                        COUNT(p.id_uname) BETWEEN 0 AND 1;
             ");
             $wls = DB::select("SELECT
-                                    u.id,
-                                    u.name,
-                                    count(u.name)
-                                FROM
-                                    pelayanan p
-                                join talents t on
-                                    t.id = p.id_talent
-                                left join unames u on
-                                    u.id = p.id_uname
-                                WHERE
-                                    p.tanggal = '$request->tanggal'
-                                    and u.id_talent like '%9%'
-                                GROUP by u.id
-                                having count(u.id) < 3
+                                u.id,
+                                u.name,
+                                COUNT(p.id_uname)
+                            FROM
+                                unames u
+                            LEFT JOIN pelayanan p ON
+                                u.id = p.id_uname
+                            WHERE
+                                u.id_talent LIKE '%9%'
+                            GROUP BY
+                                u.id
+                            HAVING
+                                COUNT(p.id_uname) BETWEEN 0 AND 1
+                            UNION
+                            SELECT
+                                u.id,
+                                u.name,
+                                COUNT(p.id_uname)
+                            FROM
+                                unames u
+                            RIGHT JOIN pelayanan p ON
+                                u.id = p.id_uname
+                            WHERE
+                                u.id_talent LIKE '%9%'
+                                AND p.tanggal = '$request->tanggal' 
+                            GROUP BY
+                                u.id
+                            HAVING
+                                COUNT(p.id_uname) BETWEEN 0 AND 1;
             ");
             $firmans = DB::select("SELECT
                                     u.id,
                                     u.name,
-                                    count(u.name)
+                                    COUNT(p.id_uname)
                                 FROM
-                                    pelayanan p
-                                join talents t on
-                                    t.id = p.id_talent
-                                left join unames u on
+                                    unames u
+                                LEFT JOIN pelayanan p ON
                                     u.id = p.id_uname
                                 WHERE
-                                    p.tanggal = '$request->tanggal'
-                                    and u.id_talent like '%10%'
-                                GROUP by u.id
-                                having count(u.id) < 3
+                                    u.id_talent LIKE '%10%'
+                                GROUP BY
+                                    u.id
+                                HAVING
+                                    COUNT(p.id_uname) BETWEEN 0 AND 1
+                                UNION
+                                SELECT
+                                    u.id,
+                                    u.name,
+                                    COUNT(p.id_uname)
+                                FROM
+                                    unames u
+                                RIGHT JOIN pelayanan p ON
+                                    u.id = p.id_uname
+                                WHERE
+                                    u.id_talent LIKE '%10%'
+                                    AND p.tanggal = '$request->tanggal' 
+                                GROUP BY
+                                    u.id
+                                HAVING
+                                    COUNT(p.id_uname) BETWEEN 0 AND 1;
             ");
             $datas = DB::select("SELECT
                                     u.id,
                                     u.name,
-                                    count(u.name)
+                                    COUNT(p.id_uname)
                                 FROM
-                                    pelayanan p
-                                join talents t on
-                                    t.id = p.id_talent
-                                left join unames u on
+                                    unames u
+                                LEFT JOIN pelayanan p ON
                                     u.id = p.id_uname
-                                WHERE
-                                    p.tanggal = '$request->tanggal'
-                                GROUP by u.id
-                                having count(u.id) < 3
+                                GROUP BY
+                                    u.id
+                                HAVING
+                                    COUNT(p.id_uname) BETWEEN 0 AND 1
+                                UNION
+                                SELECT
+                                    u.id,
+                                    u.name,
+                                    COUNT(p.id_uname)
+                                FROM
+                                    unames u
+                                RIGHT JOIN pelayanan p ON
+                                    u.id = p.id_uname
+                                GROUP BY
+                                    u.id
+                                HAVING
+                                    COUNT(p.id_uname) BETWEEN 0 AND 1;
             ");
         }
         return view('Pelayanan._add')->with(compact('drummers',
