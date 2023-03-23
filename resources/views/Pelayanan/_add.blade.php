@@ -51,7 +51,7 @@
                     </div>
                 </div>
             </form>
-            <form action="{{ route('storePelayanan') }}" method="POST" enctype='multipart/form-data'>
+            <form action="{{ route('storePelayanan') }}" method="POST" onsubmit="return validateSelect()" enctype='multipart/form-data'>
                 @csrf
                 <br>
                 <div class="row form-group">
@@ -86,8 +86,8 @@
                         <div class="mb-3">
                             <label for=""><strong>Gitar</strong></label>
                             <input type="hidden" name="id_talent[]" value="6">
-                            <select class="form-control select" name="id_user[]">
-                                <option disabled selected> -- Pilih -- </option>
+                            <select id="gitar" class="form-control select" name="id_user[]" required>
+                                <option value="" selected> -- Pilih -- </option>
                                 @foreach ($gitars as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -116,8 +116,8 @@
                         <div class="mb-3">
                             <label for=""><strong>Operator Sound</strong></label>
                             <input type="hidden" name="id_talent[]" value="7">
-                            <select class="form-control select" name="id_user[]">
-                                <option disabled selected> -- Pilih -- </option>
+                            <select class="form-control select" name="id_user[]" required>
+                                <option value="" selected> -- Pilih -- </option>
                                 @foreach ($sounds as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -126,8 +126,8 @@
                         <div class="mb-3">
                             <label for=""><strong>Operator Multimedia</strong></label>
                             <input type="hidden" name="id_talent[]" value="8">
-                            <select class="form-control select" name="id_user[]">
-                                <option disabled selected> -- Pilih -- </option>
+                            <select class="form-control select" name="id_user[]" required>
+                                <option value="" selected> -- Pilih -- </option>
                                 @foreach ($mulmeds as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -136,8 +136,8 @@
                         <div class="mb-3">
                             <label for=""><strong>Pemimpin Pujian</strong></label>
                             <input type="hidden" name="id_talent[]" value="9">
-                            <select class="form-control select" name="id_user[]">
-                                <option disabled selected> -- Pilih -- </option>
+                            <select class="form-control select" name="id_user[]" required>
+                                <option value="" selected> -- Pilih -- </option>
                                 @foreach ($wls as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -148,8 +148,8 @@
                         <div class="mb-3">
                             <label for=""><strong>Pembawa Firman</strong></label>
                             <input type="hidden" name="id_talent[]" value="10">
-                            <select class="form-control select" name="id_user[]">
-                                <option disabled selected> -- Pilih -- </option>
+                            <select class="form-control select" name="id_user[]" required>
+                                <option value="" selected> -- Pilih -- </option>
                                 @foreach ($firmans as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -158,8 +158,8 @@
                         <div class="mb-3">
                             <label for=""><strong>Asisten</strong></label>
                             <input type="hidden" name="id_talent[]" value="2">
-                            <select class="form-control select" name="id_user[]">
-                                <option disabled selected> -- Pilih -- </option>
+                            <select class="form-control select" name="id_user[]" required>
+                                <option value="" selected> -- Pilih -- </option>
                                 @foreach ($datas as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -168,8 +168,8 @@
                         <div class="mb-3">
                             <label for=""><strong>Pendoa</strong></label>
                             <input type="hidden" name="id_talent[]" value="3">
-                            <select class="form-control select" name="id_user[]">
-                                <option disabled selected> -- Pilih -- </option>
+                            <select class="form-control select" name="id_user[]" required>
+                                <option value="" selected> -- Pilih -- </option>
                                 @foreach ($datas as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -178,8 +178,8 @@
                         <div class="mb-3">
                             <label for=""><strong>Absensi</strong></label>
                             <input type="hidden" name="id_talent[]" value="4">
-                            <select class="form-control select" name="id_user[]">
-                                <option> -- Pilih -- </option>
+                            <select class="form-control select" name="id_user[]" required>
+                                <option value="" selected> -- Pilih -- </option>
                                 @foreach ($datas as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -189,8 +189,7 @@
                             <label for=""><strong>Singer</strong></label>
                             <input type="hidden" name="id_talent[]" value="11">
                             <input type="hidden" name="id_talent[]" value="11">
-                            <select class="form-control select" id="uqiwye" name="id_user[]" multiple="multiple">
-                                <option> -- Pilih -- </option>
+                            <select class="form-control select" id="uqiwye" name="id_user[]" multiple="multiple" required>
                                 @foreach ($datas as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -200,7 +199,7 @@
                             <label for=""><strong>Usher</strong></label>
                             <input type="hidden" name="id_talent[]" value="12">
                             <input type="hidden" name="id_talent[]" value="12">
-                            <select class="form-control select" id="y" name="id_user[]" multiple="multiple">
+                            <select class="form-control select" id="y" name="id_user[]" multiple="multiple" required>
                                 @foreach ($datas as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -249,23 +248,6 @@
                 alert($(this).text()); // using text() here, because the 
             });
         });
-        // $('#tgl').on('change', function() {
-        //     var date = new Date($('#tgl').val());
-        //     var day = date.getDate();
-        //     var month = date.getMonth() + 1;
-        //     var year = date.getFullYear();
-        //     var getDate = [year, month, day].join('-');
-        //     $.ajax({
-        //         url: "{{ url('pelayanan/add/{date}') }}",
-        //         data: {
-        //             tanggal: getDate
-        //         },
-        //         type: 'get',
-        //         success: function(data){
-        //             console.log(data);
-        //         }
-        //     });
-        // })
         $('select').on('change', function() {
             // Find the value we just chose
             let selected = $(this).val();
@@ -281,5 +263,14 @@
             // Hide the currently selected option from the other select
             $('option[value="' + selected + '"]', $otherSelect).remove();
         });
+
+        function validateSelect() {
+            var selectElement = document.getElementById("gitar");
+            if (selectElement.value == "") {
+                alert("Please select an option");
+                return false;
+            }
+            return true;
+        }
     </script>
 @endsection
