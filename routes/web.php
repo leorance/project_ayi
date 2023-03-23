@@ -58,8 +58,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('pelayanan', [PelayananController::class, 'index'])->name('pelayananIndex');
     Route::get('pelayanan/add', [PelayananController::class, 'addForm'])->name("formPelayanan");
     Route::post('pelayanan/add', [PelayananController::class, 'store'])->name('storePelayanan');
-    Route::post('pelayanan/{date}', [PelayananController::class, 'index']);
-    Route::post('pelayanan/add/{date}', [PelayananController::class, 'addForm']);
+    Route::get('pelayanan/{date}', [PelayananController::class, 'index']);
+    Route::get('pelayanan/add/{date}', [PelayananController::class, 'addForm']);
 
     Route::get('pelayanan/kelasa', [PelayananController::class, 'kelasa']);
     Route::get('/', [PelayananController::class, 'idx'])->name("dashboard");

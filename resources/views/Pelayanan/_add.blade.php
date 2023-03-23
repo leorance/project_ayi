@@ -9,7 +9,36 @@
             <h5>Form Pelayanans</h5>
         </div>
         <div class="card-body">
-            <form action="{{ url('pelayanan/add/{date}') }}" method="post">
+            @if (session('errors'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Something it's wrong:
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            @if (Session::has('success'))
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    {{ Session::get('success') }}
+                </div>
+            @endif
+            @if (Session::has('error'))
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    {{ Session::get('error') }}
+                </div>
+            @endif
+            <form action="{{ url('pelayanan/add/{date}') }}" method="get">
                 @csrf
                 <div class="row">
                     <div class="col">
@@ -30,7 +59,7 @@
                         <div class="mb-3">
                             <label for=""><strong>Kelas</strong></label>
                             <select class="form-control select" name="kelas">
-                                <option value="0"> -- Pilih Kelas -- </option>
+                                <option disabled selected> -- Pilih Kelas -- </option>
                                 <option value="Kelas A">Kelas A</option>
                                 <option value="Kelas B">Kelas B</option>
                                 <option value="Kelas C">Kelas C</option>
@@ -39,7 +68,7 @@
                         <div class="mb-3">
                             <label for=""><strong>Sesi</strong></label>
                             <select class="form-control select" name="sesi">
-                                <option value="0"> -- Pilih Sesi -- </option>
+                                <option disabled selected> -- Pilih Sesi -- </option>
                                 <option value="Sesi 1">Sesi 1</option>
                                 <option value="Sesi 2">Sesi 2</option>
                                 <option value="Sesi 3">Sesi 3</option>
@@ -58,7 +87,7 @@
                             <label for=""><strong>Gitar</strong></label>
                             <input type="hidden" name="id_talent[]" value="6">
                             <select class="form-control select" name="id_user[]">
-                                <option value="0"> -- Pilih -- </option>
+                                <option disabled selected> -- Pilih -- </option>
                                 @foreach ($gitars as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -68,7 +97,7 @@
                             <label for=""><strong>Drummer</strong></label>
                             <input type="hidden" name="id_talent[]" value="1">
                             <select class="form-control select" name="id_user[]">
-                                <option value="0"> -- Pilih -- </option>
+                                <option disabled selected> -- Pilih -- </option>
                                 @foreach ($drummers as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -78,7 +107,7 @@
                             <label for=""><strong>Keyboard</strong></label>
                             <input type="hidden" name="id_talent[]" value="5">
                             <select class="form-control select" name="id_user[]">
-                                <option value="0"> -- Pilih -- </option>
+                                <option disabled selected> -- Pilih -- </option>
                                 @foreach ($keyboards as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -88,7 +117,7 @@
                             <label for=""><strong>Operator Sound</strong></label>
                             <input type="hidden" name="id_talent[]" value="7">
                             <select class="form-control select" name="id_user[]">
-                                <option value="0"> -- Pilih -- </option>
+                                <option disabled selected> -- Pilih -- </option>
                                 @foreach ($sounds as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -98,7 +127,7 @@
                             <label for=""><strong>Operator Multimedia</strong></label>
                             <input type="hidden" name="id_talent[]" value="8">
                             <select class="form-control select" name="id_user[]">
-                                <option value="0"> -- Pilih -- </option>
+                                <option disabled selected> -- Pilih -- </option>
                                 @foreach ($mulmeds as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -108,7 +137,7 @@
                             <label for=""><strong>Pemimpin Pujian</strong></label>
                             <input type="hidden" name="id_talent[]" value="9">
                             <select class="form-control select" name="id_user[]">
-                                <option value="0"> -- Pilih -- </option>
+                                <option disabled selected> -- Pilih -- </option>
                                 @foreach ($wls as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -120,7 +149,7 @@
                             <label for=""><strong>Pembawa Firman</strong></label>
                             <input type="hidden" name="id_talent[]" value="10">
                             <select class="form-control select" name="id_user[]">
-                                <option value="0"> -- Pilih -- </option>
+                                <option disabled selected> -- Pilih -- </option>
                                 @foreach ($firmans as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -130,7 +159,7 @@
                             <label for=""><strong>Asisten</strong></label>
                             <input type="hidden" name="id_talent[]" value="2">
                             <select class="form-control select" name="id_user[]">
-                                <option value="0"> -- Pilih -- </option>
+                                <option disabled selected> -- Pilih -- </option>
                                 @foreach ($datas as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -140,7 +169,7 @@
                             <label for=""><strong>Pendoa</strong></label>
                             <input type="hidden" name="id_talent[]" value="3">
                             <select class="form-control select" name="id_user[]">
-                                <option value="0"> -- Pilih -- </option>
+                                <option disabled selected> -- Pilih -- </option>
                                 @foreach ($datas as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -150,7 +179,7 @@
                             <label for=""><strong>Absensi</strong></label>
                             <input type="hidden" name="id_talent[]" value="4">
                             <select class="form-control select" name="id_user[]">
-                                <option value="0"> -- Pilih -- </option>
+                                <option> -- Pilih -- </option>
                                 @foreach ($datas as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -161,7 +190,7 @@
                             <input type="hidden" name="id_talent[]" value="11">
                             <input type="hidden" name="id_talent[]" value="11">
                             <select class="form-control select" id="uqiwye" name="id_user[]" multiple="multiple">
-                                <option value="0"> -- Pilih -- </option>
+                                <option> -- Pilih -- </option>
                                 @foreach ($datas as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
