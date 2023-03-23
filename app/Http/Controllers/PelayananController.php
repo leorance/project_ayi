@@ -681,31 +681,38 @@ class PelayananController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput($request->all());
         }
-
-        $data = [];
-        foreach ($request->id_talent as $key => $id_talent) {
-            $data[$key]['id_talent'] = $id_talent;
-        }
-        foreach ($request->id_user as $key => $id_user) {
-            $data[$key]['id_uname'] = $id_user;
-            $data[$key]['sesi'] = $request->sesi;
-            $data[$key]['kelas'] = $request->kelas;
-            $data[$key]['tanggal'] = $request->date;
-            $data[$key]['id_pel'] = "PEL-".$request->sesi."-".$request->kelas."-".$request->date;
-        }
-
-        // $singers = implode(',',$data[10]['id_uname']);
-        // $ushers  = implode(',',$data[11]['id_uname']);
-        // $data[10]['id_uname'] = $singers;
-        // $data[11]['id_uname'] = $ushers;
-
-        $save = Pelayanan::upsert($data, ['id']);
-
-        if ($save) {
-            Session::flash('success', 'Successfully add new pelayanan.');
-            return redirect()->route('pelayananIndex');
+        $c = DB::select("SELECT
+                            COUNT(id) AS count
+                        FROM
+                            pelayanan
+                        WHERE
+                            sesi LIKE '$request->sesi'
+                            and kelas = '$request->kelas'
+                            and tanggal = '$request->date';
+        "
+        );
+        if ($c[0]->count == 0) {
+            $data = [];
+            foreach ($request->id_talent as $key => $id_talent) {
+                $data[$key]['id_talent'] = $id_talent;
+            }
+            foreach ($request->id_user as $key => $id_user) {
+                $data[$key]['id_uname'] = $id_user;
+                $data[$key]['sesi'] = $request->sesi;
+                $data[$key]['kelas'] = $request->kelas;
+                $data[$key]['tanggal'] = $request->date;
+                $data[$key]['id_pel'] = "PEL-".$request->sesi."-".$request->kelas."-".$request->date;
+            }
+            $save = Pelayanan::upsert($data, ['id']);
+            if ($save) {
+                Session::flash('success', 'Successfully add new pelayanan.');
+                return redirect()->route('pelayananIndex');
+            } else {
+                Session::flash('errors', ['' => 'Failed to add new pelayanan, Please try again later']);
+                return redirect()->route('pelayananIndex');
+            }
         } else {
-            Session::flash('errors', ['' => 'Failed to add new pelayanan, Please try again later']);
+            Session::flash('errors', ['error' => 'Maaf, telah menambahkan sesi dan kelas pada tanggal ini sebelumnya.']);
             return redirect()->route('pelayananIndex');
         }
     }

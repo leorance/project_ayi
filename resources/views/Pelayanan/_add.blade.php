@@ -76,7 +76,7 @@
                         </div>
                         <div class="mb-3">
                             <label for=""><strong>Tanggal</strong></label>
-                            <input type="date" class="form-control" name="date">
+                            <input type="date" class="form-control" name="date" value="{{request()->tanggal}}" readonly>
                         </div>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                             <label for=""><strong>Drummer</strong></label>
                             <input type="hidden" name="id_talent[]" value="1">
                             <select class="form-control select" name="id_user[]">
-                                <option disabled selected> -- Pilih -- </option>
+                                <option value="0"> -- Pilih -- </option>
                                 @foreach ($drummers as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
@@ -107,7 +107,7 @@
                             <label for=""><strong>Keyboard</strong></label>
                             <input type="hidden" name="id_talent[]" value="5">
                             <select class="form-control select" name="id_user[]">
-                                <option disabled selected> -- Pilih -- </option>
+                                <option value="0"> -- Pilih -- </option>
                                 @foreach ($keyboards as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                 @endforeach
