@@ -564,17 +564,25 @@ class PelayananController extends Controller
                                     HAVING countb < 3;
             ");
             $sounds = DB::select("SELECT
-                                    u.id,
-                                    u.name,
-                                    COUNT(IF(p.tanggal='$request->tanggal', u.id_talent, NULL)) as countb
-                                FROM
-                                    unames u
-                                LEFT JOIN pelayanan p ON
-                                    u.id = p.id_uname
-                                WHERE
-                                    u.id_talent LIKE '%7%'
-                                GROUP BY
-                                    u.id;
+                                        u.id,
+                                        u.name,
+                                        COUNT(
+                                            IF(
+                                                p.tanggal = '2023-03-26',
+                                                u.id_talent,
+                                                NULL
+                                            )
+                                        ) AS countb
+                                    FROM
+                                        unames u
+                                    LEFT JOIN pelayanan p ON
+                                        u.id = p.id_uname
+                                    WHERE
+                                        u.id_talent LIKE '%7%'
+                                    GROUP BY
+                                        u.id
+                                    HAVING
+                                        countb < 3;
             ");
             $mulmeds = DB::select("SELECT
                                         u.id,
@@ -593,7 +601,13 @@ class PelayananController extends Controller
             $wls = DB::select("SELECT
                                     u.id,
                                     u.name,
-                                    COUNT(IF(p.tanggal='$request->tanggal', u.id_talent, NULL)) as countb
+                                    COUNT(
+                                        IF(
+                                            p.tanggal = '2023-03-26',
+                                            u.id_talent,
+                                            NULL
+                                        )
+                                    ) AS countb
                                 FROM
                                     unames u
                                 LEFT JOIN pelayanan p ON
@@ -601,7 +615,9 @@ class PelayananController extends Controller
                                 WHERE
                                     u.id_talent LIKE '%9%'
                                 GROUP BY
-                                    u.id;
+                                    u.id
+                                HAVING
+                                    countb < 3;
             ");
             $firmans = DB::select("SELECT
                                         u.id,
