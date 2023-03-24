@@ -533,7 +533,7 @@ class PelayananController extends Controller
                                         u.id_talent LIKE '1%'
                                     GROUP BY
                                         u.id
-                                    HAVING countb < 3;
+                                    HAVING countb < 2;
             ");
             $keyboards = DB::select("SELECT
                                         u.id,
@@ -547,7 +547,7 @@ class PelayananController extends Controller
                                         u.id_talent LIKE '%5%'
                                     GROUP BY
                                         u.id
-                                    HAVING countb < 3;
+                                    HAVING countb < 2;
             ");
             $gitars = DB::select("SELECT
                                         u.id,
@@ -561,7 +561,7 @@ class PelayananController extends Controller
                                         u.id_talent LIKE '%6%'
                                     GROUP BY
                                         u.id
-                                    HAVING countb < 3;
+                                    HAVING countb < 2;
             ");
             $sounds = DB::select("SELECT
                                         u.id,
@@ -596,7 +596,7 @@ class PelayananController extends Controller
                                         u.id_talent LIKE '%8%'
                                     GROUP BY
                                         u.id
-                                    HAVING countb < 3;
+                                    HAVING countb < 2;
             ");
             $wls = DB::select("SELECT
                                     u.id,
@@ -631,7 +631,7 @@ class PelayananController extends Controller
                                         u.id_talent LIKE '%10%'
                                     GROUP BY
                                         u.id
-                                    HAVING countb < 3;
+                                    HAVING countb < 2;
             ");
             $datas = DB::select("SELECT
                                     u.id,
@@ -649,7 +649,7 @@ class PelayananController extends Controller
                                     u.id = p.id_uname
                                 GROUP BY
                                     u.id
-                                HAVING countb < 3;
+                                HAVING countb < 2;
             ");
         }
         return view('Pelayanan._add')->with(compact('drummers',
