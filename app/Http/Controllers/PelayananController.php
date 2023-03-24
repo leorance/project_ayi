@@ -582,7 +582,7 @@ class PelayananController extends Controller
                                     GROUP BY
                                         u.id
                                     HAVING
-                                        countb < 3;
+                                        countb < 2;
             ");
             $mulmeds = DB::select("SELECT
                                         u.id,
@@ -617,7 +617,7 @@ class PelayananController extends Controller
                                 GROUP BY
                                     u.id
                                 HAVING
-                                    countb < 3;
+                                    countb < 2;
             ");
             $firmans = DB::select("SELECT
                                         u.id,
