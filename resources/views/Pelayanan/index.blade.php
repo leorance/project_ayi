@@ -44,7 +44,7 @@
                 </div>
             @endif
             <div class="row ml-1">
-                <form action="{{ url('pelayanan/{date}') }}" method="post">
+                <form action="{{ url('pelayanan/{date}') }}" method="get">
                     @csrf
                     <div class="row">
                         <div class="col-3 form-group">
