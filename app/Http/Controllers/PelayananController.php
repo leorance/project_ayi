@@ -568,7 +568,7 @@ class PelayananController extends Controller
                                         u.name,
                                         COUNT(
                                             IF(
-                                                p.tanggal = '2023-03-26',
+                                                p.tanggal = '$request->tanggal',
                                                 u.id_talent,
                                                 NULL
                                             )
@@ -603,7 +603,7 @@ class PelayananController extends Controller
                                     u.name,
                                     COUNT(
                                         IF(
-                                            p.tanggal = '2023-03-26',
+                                            p.tanggal = '$request->tanggal',
                                             u.id_talent,
                                             NULL
                                         )
