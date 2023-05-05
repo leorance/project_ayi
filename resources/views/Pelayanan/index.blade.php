@@ -71,13 +71,13 @@
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
-                                        aria-selected="true">Sesi 1</button>
+                                        aria-selected="true">Sesi 1 (07:00 - 09:00)</button>
                                     <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-profile" type="button" role="tab"
-                                        aria-controls="nav-profile" aria-selected="false">Sesi 2</button>
+                                        aria-controls="nav-profile" aria-selected="false">Sesi 2 (09:00 - 11:00)</button>
                                     <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-contact" type="button" role="tab"
-                                        aria-controls="nav-contact" aria-selected="false">Sesi 3</button>
+                                        aria-controls="nav-contact" aria-selected="false">Sesi 3 (13:00 - 15:00)</button>
                                 </div>
                             </nav>
                             <div class="tab-content" id="nav-tabContent">
@@ -173,13 +173,13 @@
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <button class="nav-link active" id="nav-homea1-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-homea1" type="button" role="tab"
-                                        aria-controls="nav-homea1" aria-selected="true">Sesi 1</button>
+                                        aria-controls="nav-homea1" aria-selected="true">Sesi 1 (07:00 - 09:00)</button>
                                     <button class="nav-link" id="nav-profileb2-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-profileb2" type="button" role="tab"
-                                        aria-controls="nav-profileb2" aria-selected="false">Sesi 2</button>
+                                        aria-controls="nav-profileb2" aria-selected="false">Sesi 2 (09:00 - 11:00)</button>
                                     <button class="nav-link" id="nav-contactc3-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-contactc3" type="button" role="tab"
-                                        aria-controls="nav-contactc3" aria-selected="false">Sesi 3</button>
+                                        aria-controls="nav-contactc3" aria-selected="false">Sesi 3 (13:00 - 15:00)</button>
                                 </div>
                             </nav>
                             <div class="tab-content" id="nav-tabContent">
@@ -275,13 +275,13 @@
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <button class="nav-link active" id="nav-homea2-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-homea2" type="button" role="tab"
-                                        aria-controls="nav-homea2" aria-selected="true">Sesi 1</button>
+                                        aria-controls="nav-homea2" aria-selected="true">Sesi 1 (07:00 - 09:00)</button>
                                     <button class="nav-link" id="nav-profileb3-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-profileb3" type="button" role="tab"
-                                        aria-controls="nav-profileb3" aria-selected="false">Sesi 2</button>
+                                        aria-controls="nav-profileb3" aria-selected="false">Sesi 2 (09:00 - 11:00)</button>
                                     <button class="nav-link" id="nav-contactc4-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-contactc4" type="button" role="tab"
-                                        aria-controls="nav-contactc4" aria-selected="false">Sesi 3</button>
+                                        aria-controls="nav-contactc4" aria-selected="false">Sesi 3 (13:00 - 15:00)</button>
                                 </div>
                             </nav>
                             <div class="tab-content" id="nav-tabContent">
