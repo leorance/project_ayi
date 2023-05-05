@@ -9,35 +9,7 @@
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="{{url('/')}}">Home</a>
           </li>
-          {{-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Kelas A
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Sesi 1</a></li>
-              <li><a class="dropdown-item" href="#">Sesi 2</a></li>
-              <li><a class="dropdown-item" href="#">Sesi 3</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Kelas B
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Sesi 1</a></li>
-              <li><a class="dropdown-item" href="#">Sesi 2</a></li>
-              <li><a class="dropdown-item" href="#">Sesi 3</a></li>
-            </ul>
-          </li><li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Kelas C
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Sesi 1</a></li>
-              <li><a class="dropdown-item" href="#">Sesi 2</a></li>
-              <li><a class="dropdown-item" href="#">Sesi 3</a></li>
-            </ul>
-          </li> --}}
+          @if (Auth::user()->is_admin == 1)
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               General Setting
@@ -48,18 +20,23 @@
               <li><a class="dropdown-item" href="{{url('pelayanan')}}">Pelayanan</a></li>
             </ul>
           </li>
+          @else
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{{url('nologin')}}">Lihat Jadwal</a>
+          </li>
+          @endif
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 {{ Auth::user()->name }}
             </a>
 
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();">
+                <a class="dropdown-item" href="">
+                  Report Pelayanan
+              </a>
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     {{ __('Logout') }}
                 </a>
-
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>

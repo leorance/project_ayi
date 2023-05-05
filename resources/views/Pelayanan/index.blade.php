@@ -48,7 +48,7 @@
                     @csrf
                     <div class="row">
                         <div class="col-3 form-group">
-                            <input type="date" name="date" class="form-control">
+                            <input type="date" name="date" class="form-control" value="{{request()->date}}">
                         </div>
                         <div class="col-2">
                             <button type="submit" class="form-control btn btn-primary">Filter</button>

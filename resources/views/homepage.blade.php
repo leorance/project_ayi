@@ -1,4 +1,7 @@
 @extends('Layouts._master')
+@section('head-custom')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+@endsection
 @section('content')
     <?php
     $x = 3;
@@ -54,13 +57,13 @@
                         <div class="container mt-4">
                             <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                                    <button class="nav-link active mb-3" id="nav-home-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
                                         aria-selected="true">Sesi 1</button>
-                                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+                                    <button class="nav-link mb-3" id="nav-profile-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-profile" type="button" role="tab"
                                         aria-controls="nav-profile" aria-selected="false">Sesi 2</button>
-                                    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                                    <button class="nav-link mb-3" id="nav-contact-tab" data-bs-toggle="tab"
                                         data-bs-target="#nav-contact" type="button" role="tab"
                                         aria-controls="nav-contact" aria-selected="false">Sesi 3</button>
                                 </div>
@@ -68,7 +71,7 @@
                             <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
                                     aria-labelledby="nav-home-tab" tabindex="0">
-                                    <table class="table table-striped">
+                                    <table class="table table-striped" id="example">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
@@ -349,4 +352,12 @@
             </div>
         </div>
     </div>
+@section('script-custom')
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>
+@endsection
 @endsection
