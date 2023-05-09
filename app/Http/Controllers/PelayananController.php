@@ -733,6 +733,19 @@ class PelayananController extends Controller
         }
     }
 
+    public function report(){
+        $now = Carbon::now()->next(Carbon::SUNDAY)->todatestring();
+        $datas = DB::SELECT("SELECT pelayanan.tanggal, pelayanan.sesi, pelayanan.kelas, unames.name, talents.nama_talent
+        FROM pelayanan
+        LEFT JOIN unames
+        ON pelayanan.id_uname = unames.id
+        LEFT JOIN talents
+        ON pelayanan.id_talent = talents.id
+        WHERE pelayanan.tanggal = '$now'
+        ORDER BY pelayanan.kelas;
+        ");
+        return view('Report.index', compact('datas'));
+    }
     /**
      * Display the specified resource.
      *

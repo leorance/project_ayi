@@ -60,6 +60,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('pelayanan/add', [PelayananController::class, 'store'])->name('storePelayanan');
     Route::get('pelayanan/{date}', [PelayananController::class, 'index']);
     Route::get('pelayanan/add/{date}', [PelayananController::class, 'addForm']);
+    
+    Route::get('report', [PelayananController::class, 'report'])->name('reportPelayanan');
 
     Route::get('pelayanan/kelasa', [PelayananController::class, 'kelasa']);
     Route::get('/', [PelayananController::class, 'idx'])->name("dashboard");
