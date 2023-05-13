@@ -41,6 +41,33 @@
                     {{ Session::get('error') }}
                 </div>
             @endif
+            @if (!Auth::user()->ref_id)    
+            <table id="data-table" class="table table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Sesi</th>
+                        <th>Kelas</th>
+                        <th>Bidang Pelayanan</th>
+                        <th>Nama Pelayan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $no = 1;
+                    ?>
+                    @foreach ($datas as $data)
+                        <tr>
+                            <td>{{ $no++ }}</td>
+                            <td>{{$data->sesi}}</td>
+                            <td>{{$data->kelas}}</td>
+                            <td>{{$data->nama_talent}}</td>
+                            <td>{{$data->name ?? '-'}}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            @else
             <table id="data-table" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
@@ -48,7 +75,6 @@
                         <th>Tanggal</th>
                         <th>Sesi</th>
                         <th>Kelas</th>
-                        <th>Nama Pelayan</th>
                         <th>Bidang Pelayanan</th>
                     </tr>
                 </thead>
@@ -62,12 +88,12 @@
                             <td>{{date('d M, Y', strtotime($data->tanggal))}}</td>
                             <td>{{$data->sesi}}</td>
                             <td>{{$data->kelas}}</td>
-                            <td>{{$data->name ?? '-'}}</td>
                             <td>{{$data->nama_talent}}</td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+            @endif
         </div>
     </div>
 @endsection
