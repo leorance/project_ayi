@@ -523,7 +523,8 @@ class PelayananController extends Controller
                                         LEFT JOIN talents
                                         ON pelayanan.id_talent = talents.id
                                         WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
-                                        ORDER BY pelayanan.kelas        
+                                        ORDER BY pelayanan.kelas
+                                    LIMIT 1        
                                     );
             ");
             $pel12 = DB::select("SELECT
@@ -550,7 +551,8 @@ class PelayananController extends Controller
                                         LEFT JOIN talents
                                         ON pelayanan.id_talent = talents.id
                                         WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
-                                        ORDER BY pelayanan.kelas        
+                                        ORDER BY pelayanan.kelas
+                                    LIMIT 1        
                                     );
             ");
             $pel13 = DB::select("SELECT
@@ -577,7 +579,8 @@ class PelayananController extends Controller
                                         LEFT JOIN talents
                                         ON pelayanan.id_talent = talents.id
                                         WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
-                                        ORDER BY pelayanan.kelas        
+                                        ORDER BY pelayanan.kelas
+                                    LIMIT 1        
                                     );
             ");
             $pel21 = DB::select("SELECT
@@ -604,7 +607,8 @@ class PelayananController extends Controller
                                         LEFT JOIN talents
                                         ON pelayanan.id_talent = talents.id
                                         WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
-                                        ORDER BY pelayanan.kelas        
+                                        ORDER BY pelayanan.kelas
+                                    LIMIT 1        
                                     );
             ");
             $pel22 = DB::select("SELECT
@@ -631,7 +635,8 @@ class PelayananController extends Controller
                                         LEFT JOIN talents
                                         ON pelayanan.id_talent = talents.id
                                         WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
-                                        ORDER BY pelayanan.kelas        
+                                        ORDER BY pelayanan.kelas
+                                    LIMIT 1        
                                     );
             ");
             $pel23 = DB::select("SELECT
@@ -658,7 +663,8 @@ class PelayananController extends Controller
                                         LEFT JOIN talents
                                         ON pelayanan.id_talent = talents.id
                                         WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
-                                        ORDER BY pelayanan.kelas        
+                                        ORDER BY pelayanan.kelas
+                                    LIMIT 1        
                                     );
             ");
             $pel31 = DB::select("SELECT
@@ -685,7 +691,8 @@ class PelayananController extends Controller
                                         LEFT JOIN talents
                                         ON pelayanan.id_talent = talents.id
                                         WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
-                                        ORDER BY pelayanan.kelas        
+                                        ORDER BY pelayanan.kelas
+                                    LIMIT 1        
                                     );
             ");
             $pel32 = DB::select("SELECT
@@ -712,7 +719,8 @@ class PelayananController extends Controller
                                         LEFT JOIN talents
                                         ON pelayanan.id_talent = talents.id
                                         WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
-                                        ORDER BY pelayanan.kelas        
+                                        ORDER BY pelayanan.kelas
+                                    LIMIT 1        
                                     );
             ");
             $pel33 = DB::select("SELECT
@@ -739,7 +747,8 @@ class PelayananController extends Controller
                                         LEFT JOIN talents
                                         ON pelayanan.id_talent = talents.id
                                         WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
-                                        ORDER BY pelayanan.kelas        
+                                        ORDER BY pelayanan.kelas
+                                    LIMIT 1        
                                     );
             ");
             }
