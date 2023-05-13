@@ -22,7 +22,7 @@
           </li>
           @else
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{{url('nologin')}}">Lihat Jadwal</a>
+            <a class="nav-link" aria-current="page" href="{{route('reportPelayanan')}}">Lihat Jadwal</a>
           </li>
           @endif
           <li class="nav-item dropdown">
@@ -31,6 +31,7 @@
             </a>
 
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              @if (!Auth::user()->ref_id)
                 <a class="dropdown-item" href="{{route('reportPelayanan')}}">
                   Report Pelayanan
                 </a>
@@ -40,6 +41,14 @@
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
+              @else
+              <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+          </form>
+              @endif
             </div>
         </li>
         </ul>
