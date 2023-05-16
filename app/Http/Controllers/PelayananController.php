@@ -515,16 +515,16 @@ class PelayananController extends Controller
                                     p.kelas LIKE '%_A' 
                                     AND p.sesi LIKE '%_1' 
                                     AND p.tanggal = '$now'
-                                    AND p.id_pel LIKE (
-                                        SELECT pelayanan.id_pel
-                                        FROM pelayanan
-                                        LEFT JOIN unames
-                                        ON pelayanan.id_uname = unames.id
-                                        LEFT JOIN talents
-                                        ON pelayanan.id_talent = talents.id
-                                        WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
-                                        ORDER BY pelayanan.kelas
-                                    LIMIT 1        
+                                    -- AND p.id_pel LIKE (
+                                    --     SELECT pelayanan.id_pel
+                                    --     FROM pelayanan
+                                    --     LEFT JOIN unames
+                                    --     ON pelayanan.id_uname = unames.id
+                                    --     LEFT JOIN talents
+                                    --     ON pelayanan.id_talent = talents.id
+                                    --     WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
+                                    --     ORDER BY pelayanan.kelas
+                                    -- LIMIT 1        
                                     );
             ");
             $pel12 = DB::select("SELECT
@@ -543,16 +543,16 @@ class PelayananController extends Controller
                                     p.kelas LIKE '%_A'
                                     and p.sesi LIKE '%_2'
                                     and p.tanggal = '$now'
-                                    AND p.id_pel LIKE (
-                                        SELECT pelayanan.id_pel
-                                        FROM pelayanan
-                                        LEFT JOIN unames
-                                        ON pelayanan.id_uname = unames.id
-                                        LEFT JOIN talents
-                                        ON pelayanan.id_talent = talents.id
-                                        WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
-                                        ORDER BY pelayanan.kelas
-                                    LIMIT 1        
+                                    -- AND p.id_pel LIKE (
+                                    --     SELECT pelayanan.id_pel
+                                    --     FROM pelayanan
+                                    --     LEFT JOIN unames
+                                    --     ON pelayanan.id_uname = unames.id
+                                    --     LEFT JOIN talents
+                                    --     ON pelayanan.id_talent = talents.id
+                                    --     WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
+                                    --     ORDER BY pelayanan.kelas
+                                    -- LIMIT 1        
                                     );
             ");
             $pel13 = DB::select("SELECT
@@ -571,16 +571,16 @@ class PelayananController extends Controller
                                     p.kelas LIKE '%_A'
                                     and p.sesi LIKE '%_3'
                                     and p.tanggal = '$now'
-                                    AND p.id_pel LIKE (
-                                        SELECT pelayanan.id_pel
-                                        FROM pelayanan
-                                        LEFT JOIN unames
-                                        ON pelayanan.id_uname = unames.id
-                                        LEFT JOIN talents
-                                        ON pelayanan.id_talent = talents.id
-                                        WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
-                                        ORDER BY pelayanan.kelas
-                                    LIMIT 1        
+                                    -- AND p.id_pel LIKE (
+                                    --     SELECT pelayanan.id_pel
+                                    --     FROM pelayanan
+                                    --     LEFT JOIN unames
+                                    --     ON pelayanan.id_uname = unames.id
+                                    --     LEFT JOIN talents
+                                    --     ON pelayanan.id_talent = talents.id
+                                    --     WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
+                                    --     ORDER BY pelayanan.kelas
+                                    -- LIMIT 1        
                                     );
             ");
             $pel21 = DB::select("SELECT
@@ -599,16 +599,16 @@ class PelayananController extends Controller
                                     p.kelas LIKE '%_B'
                                     and p.sesi LIKE '%_1'
                                     and p.tanggal = '$now'
-                                    AND p.id_pel LIKE (
-                                        SELECT pelayanan.id_pel
-                                        FROM pelayanan
-                                        LEFT JOIN unames
-                                        ON pelayanan.id_uname = unames.id
-                                        LEFT JOIN talents
-                                        ON pelayanan.id_talent = talents.id
-                                        WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
-                                        ORDER BY pelayanan.kelas
-                                    LIMIT 1        
+                                    -- AND p.id_pel LIKE (
+                                    --     SELECT pelayanan.id_pel
+                                    --     FROM pelayanan
+                                    --     LEFT JOIN unames
+                                    --     ON pelayanan.id_uname = unames.id
+                                    --     LEFT JOIN talents
+                                    --     ON pelayanan.id_talent = talents.id
+                                    --     WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
+                                    --     ORDER BY pelayanan.kelas
+                                    -- LIMIT 1        
                                     );
             ");
             $pel22 = DB::select("SELECT
@@ -627,16 +627,16 @@ class PelayananController extends Controller
                                     p.kelas LIKE '%_B'
                                     and p.sesi LIKE '%_2'
                                     and p.tanggal = '$now'
-                                    AND p.id_pel LIKE (
-                                        SELECT pelayanan.id_pel
-                                        FROM pelayanan
-                                        LEFT JOIN unames
-                                        ON pelayanan.id_uname = unames.id
-                                        LEFT JOIN talents
-                                        ON pelayanan.id_talent = talents.id
-                                        WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
-                                        ORDER BY pelayanan.kelas
-                                    LIMIT 1        
+                                    -- AND p.id_pel LIKE (
+                                    --     SELECT pelayanan.id_pel
+                                    --     FROM pelayanan
+                                    --     LEFT JOIN unames
+                                    --     ON pelayanan.id_uname = unames.id
+                                    --     LEFT JOIN talents
+                                    --     ON pelayanan.id_talent = talents.id
+                                    --     WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
+                                    --     ORDER BY pelayanan.kelas
+                                    -- LIMIT 1        
                                     );
             ");
             $pel23 = DB::select("SELECT
@@ -655,16 +655,16 @@ class PelayananController extends Controller
                                     p.kelas LIKE '%_B'
                                     and p.sesi LIKE '%_3'
                                     and p.tanggal = '$now'
-                                    AND p.id_pel LIKE (
-                                        SELECT pelayanan.id_pel
-                                        FROM pelayanan
-                                        LEFT JOIN unames
-                                        ON pelayanan.id_uname = unames.id
-                                        LEFT JOIN talents
-                                        ON pelayanan.id_talent = talents.id
-                                        WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
-                                        ORDER BY pelayanan.kelas
-                                    LIMIT 1        
+                                    -- AND p.id_pel LIKE (
+                                    --     SELECT pelayanan.id_pel
+                                    --     FROM pelayanan
+                                    --     LEFT JOIN unames
+                                    --     ON pelayanan.id_uname = unames.id
+                                    --     LEFT JOIN talents
+                                    --     ON pelayanan.id_talent = talents.id
+                                    --     WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
+                                    --     ORDER BY pelayanan.kelas
+                                    -- LIMIT 1        
                                     );
             ");
             $pel31 = DB::select("SELECT
@@ -683,16 +683,16 @@ class PelayananController extends Controller
                                     p.kelas LIKE '%_C'
                                     and p.sesi LIKE '%_1'
                                     and p.tanggal = '$now'
-                                    AND p.id_pel LIKE (
-                                        SELECT pelayanan.id_pel
-                                        FROM pelayanan
-                                        LEFT JOIN unames
-                                        ON pelayanan.id_uname = unames.id
-                                        LEFT JOIN talents
-                                        ON pelayanan.id_talent = talents.id
-                                        WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
-                                        ORDER BY pelayanan.kelas
-                                    LIMIT 1        
+                                    -- AND p.id_pel LIKE (
+                                    --     SELECT pelayanan.id_pel
+                                    --     FROM pelayanan
+                                    --     LEFT JOIN unames
+                                    --     ON pelayanan.id_uname = unames.id
+                                    --     LEFT JOIN talents
+                                    --     ON pelayanan.id_talent = talents.id
+                                    --     WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
+                                    --     ORDER BY pelayanan.kelas
+                                    -- LIMIT 1        
                                     );
             ");
             $pel32 = DB::select("SELECT
@@ -711,16 +711,16 @@ class PelayananController extends Controller
                                     p.kelas LIKE '%_C'
                                     and p.sesi LIKE '%_2'
                                     and p.tanggal = '$now'
-                                    AND p.id_pel LIKE (
-                                        SELECT pelayanan.id_pel
-                                        FROM pelayanan
-                                        LEFT JOIN unames
-                                        ON pelayanan.id_uname = unames.id
-                                        LEFT JOIN talents
-                                        ON pelayanan.id_talent = talents.id
-                                        WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
-                                        ORDER BY pelayanan.kelas
-                                    LIMIT 1        
+                                    -- AND p.id_pel LIKE (
+                                    --     SELECT pelayanan.id_pel
+                                    --     FROM pelayanan
+                                    --     LEFT JOIN unames
+                                    --     ON pelayanan.id_uname = unames.id
+                                    --     LEFT JOIN talents
+                                    --     ON pelayanan.id_talent = talents.id
+                                    --     WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
+                                    --     ORDER BY pelayanan.kelas
+                                    -- LIMIT 1        
                                     );
             ");
             $pel33 = DB::select("SELECT
@@ -739,16 +739,16 @@ class PelayananController extends Controller
                                     p.kelas LIKE '%_C'
                                     and p.sesi LIKE '%_3'
                                     and p.tanggal = '$now'
-                                    AND p.id_pel LIKE (
-                                        SELECT pelayanan.id_pel
-                                        FROM pelayanan
-                                        LEFT JOIN unames
-                                        ON pelayanan.id_uname = unames.id
-                                        LEFT JOIN talents
-                                        ON pelayanan.id_talent = talents.id
-                                        WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
-                                        ORDER BY pelayanan.kelas
-                                    LIMIT 1        
+                                    -- AND p.id_pel LIKE (
+                                    --     SELECT pelayanan.id_pel
+                                    --     FROM pelayanan
+                                    --     LEFT JOIN unames
+                                    --     ON pelayanan.id_uname = unames.id
+                                    --     LEFT JOIN talents
+                                    --     ON pelayanan.id_talent = talents.id
+                                    --     WHERE unames.id = ".Auth::user()->ref_id." AND pelayanan.tanggal = '$now'
+                                    --     ORDER BY pelayanan.kelas
+                                    -- LIMIT 1        
                                     );
             ");
             }
